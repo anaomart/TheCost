@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheCost</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 contenteditable>اسم الصنف </h1>
+    <table class="table" id="table">
+        <thead>
+            <tr class="table1">
+                <th scope="col">#</th>
+                <th scope="col">اسم المنتج</th>
+                <th scope="col">كميه</th>
+                <th scope="col">سعر</th>
+
+            </tr>
+        </thead>
+        <tbody class="tableBody">
+            <tr class="table1">
+                <th scope="row">1</th>
+                <td>
+                    <input type="text" name="example" placeholder="اسم المنتج" list="exampleList" class="firstOne">
+                    <datalist id="exampleList">
+
+                    </datalist>
+                </td>
+                <td>
+                    <input type="text" placeholder="الكميه">
+                </td>
+                <td>
+                    <input type="text" placeholder=" السعر ">
+                </td>
+
+            </tr>
+            <tr class="table1">
+                <th scope="row">2</th>
+                <td>
+                    <input type="text" name="example" placeholder="اسم المنتج" list="exampleList">
+                </td>
+                <td>
+                    <input type="text" placeholder="الكميه">
+                </td>
+                <td>
+                    <input type="text" class="x" placeholder=" السعر ">
+                </td>
+
+
+            </tr>
+            <tr class="table1">
+                <th scope="row">3</th>
+                <td>
+                    <input type="text" name="example" placeholder="اسم المنتج" list="exampleList">
+                    <datalist id="exampleList">
+
+                    </datalist></td>
+                <td>
+                    <input type="text" placeholder="الكميه">
+                </td>
+                <td>
+                    <input type="text" placeholder="السعر ">
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <div class='image'><img src="./circle-plus-solid.svg" alt=""> </div>
+
+
+
+    <div class="result bg-success my-3">
+        اجمالي التكلفه : <span id="cost">0</span>
+    </div>
+    <div style="text-align:center">
+        <label>عدد القطع </label>
+        <input style="width:80px" type="text" placeholder="عدد القطع " class="number-of-pieces">
+        <h5> سعر القطعه : <span class='one-piece' style="color:green;font-size:24px"></span></h5>
+    </div>
+    <button type="button" class="btn btn-info print">Print </button>
+
+    <button type="button" class="btn btn-primary add">اضافه اسعار  </button>
+
+
+    <div class="overlay">
+        <div class="static">
+            <table class="table table-light">
+                <thead>
+                    <tr class="var">
+                        <th scope="col">المنتج</th>
+                        <th scope="col">السعر</th>
+                    </tr>
+                </thead>
+                <tbody class="staticTable">
+                    <tr class="var">
+
+                        <td> <input type="text" placeholder="اسم المنتج"></td>
+                        <td><input type="text" placeholder="السعر "></td>
+                    </tr>
+                    <tr class="var">
+
+                        <td> <input type="text" placeholder="اسم المنتج"></td>
+                        <td> <input type="text" placeholder="السعر "></td>
+                    </tr>
+                    <tr class="var">
+                        <th> <input type="text" placeholder="اسم المنتج"></th>
+                        <td><input type="text" placeholder="السعر"></td>
+                    </tr>
+                </tbody>
+        </div>
+
+        </table>
+        <button type="button" class="btn btn-primary addToLocalStorage">اضافه  </button>
+
+
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
