@@ -4,6 +4,8 @@ let button = document.querySelector('button')
 let addButton = document.querySelector('.image');
 let list = document.querySelector('#exampleList')
 
+
+
 function listUpdate() {
     if (localStorage.getItem('product')) {
         list.innerHTML = (Object.keys(JSON.parse(localStorage.getItem('product'))).map((ele, i) => {
@@ -21,7 +23,9 @@ let result = 0;
 function calcPrice(rows) {
     [...rows].map(ele => {
         ele.addEventListener('keyup', () => {
+            let select = document.querySelectorAll('select')
 
+            let total = 0;
             let price = 0;
             let quantity = 0;
             result = 0;
@@ -32,10 +36,12 @@ function calcPrice(rows) {
                         (rows.item(i).children[3].children[0].value) = (JSON.parse(localStorage.getItem('product'))[productZ])
 
                 }
-
-                price = Math.abs((rows.item(i).children[2].children[0].value)) || "0"
+                let unit = select[i - 1].value == 'gm' ? 1000 : 1;
+                price = Math.abs((rows.item(i).children[2].children[0].value)) / unit || "0"
                 quantity = Math.abs(((rows.item(i).children[3].children[0].value))) || "0"
                 result += +(price * quantity)
+                total = price * quantity
+                rows.item(i).children[4].children[0].innerText = total.toFixed(2);
             };
             document.getElementById('cost').innerText = result.toFixed(2);
             // piece price
@@ -64,11 +70,17 @@ addButton.addEventListener('click', () => {
         </td>
         <td>
         <input type="text" placeholder="الكميه">
+        <select>
+                        <option selected  value="kg">كيلو</option>
+                        <option value="gm">جرام</option>
+                    </select>
     </td>
         <td>
             <input type="text" placeholder=" السعر ">
         </td>
-       
+        <td>
+        <h4>0</h4>
+    </td>
         </tr>
         
         `
