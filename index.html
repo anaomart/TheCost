@@ -89,24 +89,45 @@
             </tr>
         </tbody>
     </table>
-
-    <div class='image'><img src="./circle-plus-solid.svg" alt=""> </div>
-
-
-
-    <div class="result bg-success my-3">
-        اجمالي التكلفه : <span id="cost">0</span>
+    <div class="info-buttons">
+        <button type="button" class="btn btn-primary add">اضافه اسعار  </button>
+        <div class='image'><img src="./circle-plus-solid.svg" alt=""> </div>
+        <button type="button" class="btn btn-info print">Print </button>
     </div>
-    <div style="text-align:center">
-        <label>عدد القطع </label>
-        <input style="width:80px" type="text" placeholder="عدد القطع " class="number-of-pieces">
-        <h5> سعر القطعه : <span class='one-piece' style="color:green;font-size:24px"></span></h5>
+    <div class="clear"></div>
+    <!-- =------------------------------- -->
+    <div class="buttons">
+        <div style="padding-right:80px">
+
+        </div>
+        <div style="margin-top: -24px;">
+            <div class="result bg-info   w-50">
+                الوزن : <span id="weight">0</span>
+            </div>
+            <div style="text-align: center; margin-top: 10px;">
+                <label>  وزن القطعه </label>
+                <input style="width:80px " type="text" placeholder="وزن القطعه" class="weight-of-pieces">
+
+            </div>
+            <h5 style="text-align: center; "> وزن القطعه : <span class='one-piece-weight text-info' style="font-size:24px"></span></h5>
+        </div>
+        <div style="margin-top: -10px;">
+            <div class="result bg-success w-50">
+                اجمالي التكلفه : <span id="cost">0</span>
+            </div>
+            <div style="text-align: center ; margin-top: 10px;">
+                <label>عدد القطع </label>
+                <input style="width:80px " type="text" placeholder="عدد القطع " class="number-of-pieces">
+
+            </div>
+            <h5 style="text-align: center"> سعر القطعه : <span class='one-piece' style="color:green;font-size:24px"></span></h5>
+        </div>
+        <div>
+
+
+        </div>
+        <!-- ----------------------------- -->
     </div>
-    <button type="button" class="btn btn-info print">Print </button>
-
-    <button type="button" class="btn btn-primary add">اضافه اسعار  </button>
-
-
     <div class="overlay">
         <div class="static">
             <table class="table table-light">

@@ -3,7 +3,8 @@ let rows = document.querySelectorAll('.table1')
 let button = document.querySelector('button')
 let addButton = document.querySelector('.image');
 let list = document.querySelector('#exampleList')
-
+let weight = document.querySelector('#weight')
+let numberOfPieces = document.querySelector('.number-of-pieces')
 
 
 function listUpdate() {
@@ -17,18 +18,19 @@ function listUpdate() {
 }
 listUpdate();
 
-
-let result = 0;
+let result = 0
+let totalWeight = 0;
 
 function calcPrice(rows) {
     [...rows].map(ele => {
         ele.addEventListener('keyup', () => {
             let select = document.querySelectorAll('select')
-
             let total = 0;
             let price = 0;
             let quantity = 0;
+            let pieceWeight = 0;
             result = 0;
+            totalWeight = 0;
             for (let i = 1; i < rows.length; i++) {
                 let productZ = (((rows.item(i).children[1].children[0].value))) || ""
                 if (localStorage.getItem('product')) {
@@ -37,14 +39,18 @@ function calcPrice(rows) {
 
                 }
                 let unit = select[i - 1].value == 'gm' ? 1000 : 1;
-                price = Math.abs((rows.item(i).children[2].children[0].value)) / unit || "0"
-                quantity = Math.abs(((rows.item(i).children[3].children[0].value))) || "0"
+                quantity = Math.abs((rows.item(i).children[2].children[0].value)) / unit || 0
+                price = Math.abs(((rows.item(i).children[3].children[0].value))) || "00"
                 result += +(price * quantity)
                 total = price * quantity
-                rows.item(i).children[4].children[0].innerText = total.toFixed(2);
+                rows.item(i).children[4].children[0].innerText = total.toFixed(1);
+                totalWeight += quantity;
+                document.getElementById('weight').innerText = totalWeight;
+
             };
-            document.getElementById('cost').innerText = result.toFixed(2);
-            // piece price
+            document.getElementById('cost').innerText = result.toFixed(1);
+            // piece weight 
+
 
 
         })
@@ -121,13 +127,21 @@ addPrice.addEventListener('click', () => {
 })
 let add = document.querySelector('.addToLocalStorage')
 add.addEventListener('click', () => {
-    overlay.style.display = 'none';
+        overlay.style.display = 'none';
+    })
+    // pieces by weight or opposite
+let W = document.querySelector('.weight-of-pieces')
+W.addEventListener('keyup', () => {
+    numberOfPieces.value = (totalWeight / (W.value || 1)).toFixed(1)
 })
-let numberOfPieces = document.querySelector('.number-of-pieces')
 let piecePrice = document.querySelector('.one-piece');
 numberOfPieces.addEventListener('keyup', () => {
     let piece = (result / (numberOfPieces.value || 1))
     piecePrice.innerText = +piece.toFixed(2) || '00'
+    let onePieceWeight = document.querySelector('.one-piece-weight')
+    console.log(onePieceWeight)
+    onePieceWeight.innerText = (totalWeight / (numberOfPieces.value || 1)).toLocaleString() || 0
+    W.value = (totalWeight / (numberOfPieces.value || 1)).toLocaleString() || 0
     calcPrice(rows)
 
 })
