@@ -28,7 +28,8 @@ function calcPrice(rows) {
             for (let i = 1; i < rows.length; i++) {
                 let productZ = (((rows.item(i).children[1].children[0].value))) || ""
                 if (localStorage.getItem('product')) {
-                    (rows.item(i).children[3].children[0].value) = (JSON.parse(localStorage.getItem('product'))[productZ]) ? (JSON.parse(localStorage.getItem('product'))[productZ]) : ""
+                    if ((JSON.parse(localStorage.getItem('product'))[productZ]))
+                        (rows.item(i).children[3].children[0].value) = (JSON.parse(localStorage.getItem('product'))[productZ])
 
                 }
 
