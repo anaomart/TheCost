@@ -36,6 +36,8 @@
                     <select>
                         <option selected  value="kg">كيلو</option>
                         <option value="gm">جرام</option>
+                        <option value="number">عدد</option>
+
                     </select>
                 </td>
                 <td>
@@ -55,6 +57,7 @@
                     <select>
                         <option selected  value="kg">كيلو</option>
                         <option value="gm">جرام</option>
+                        <option value="number">عدد</option>
                     </select>
                 </td>
                 <td>
@@ -77,6 +80,8 @@
                     <select>
                         <option selected  value="kg">كيلو</option>
                         <option value="gm">جرام</option>
+                        <option value="number">عدد</option>
+
                     </select>
                 </td>
                 <td>
@@ -96,10 +101,12 @@
     </div>
     <!-- =------------------------------- -->
     <div class="buttons">
-        <div style="padding-right:80px">
-            " "
+        <div style="margin-right:-50px ;height: 1000px;">
+            <div class="result bg-dark w-50">
+                الأعداد : <span id="numbers">0</span>
+            </div>
         </div>
-        <div style="margin-top: -14px;">
+        <div style=" height: 1000px;">
             <div class="result bg-info   w-50">
                 الوزن : <span id="weight">0</span>
             </div>
@@ -110,7 +117,7 @@
             </div>
             <h5 style="text-align: center; "> وزن القطعه : <span class='one-piece-weight text-info' style="font-size:24px"></span></h5>
         </div>
-        <div style="margin-top: -10px;">
+        <div style=" height: 100px;">
             <div class="result bg-success w-50">
                 اجمالي التكلفه : <span id="cost">0</span>
             </div>

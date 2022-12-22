@@ -5,7 +5,7 @@ let addButton = document.querySelector('.image');
 let list = document.querySelector('#exampleList')
 let weight = document.querySelector('#weight')
 let numberOfPieces = document.querySelector('.number-of-pieces')
-
+let numbers = document.querySelector('#numbers')
 
 function listUpdate() {
     if (localStorage.getItem('product')) {
@@ -25,12 +25,14 @@ function calcPrice(rows) {
     [...rows].map(ele => {
         ele.addEventListener('keyup', () => {
             let select = document.querySelectorAll('select')
+
             let total = 0;
             let price = 0;
             let quantity = 0;
             let pieceWeight = 0;
             result = 0;
             totalWeight = 0;
+            numbers.innerText = 0;
             for (let i = 1; i < rows.length; i++) {
                 let productZ = (((rows.item(i).children[1].children[0].value))) || ""
                 if (localStorage.getItem('product')) {
@@ -38,11 +40,22 @@ function calcPrice(rows) {
                         (rows.item(i).children[3].children[0].value) = (JSON.parse(localStorage.getItem('product'))[productZ])
 
                 }
+
                 let unit = select[i - 1].value == 'gm' ? 1000 : 1;
-                quantity = Math.abs((rows.item(i).children[2].children[0].value)) / unit || 0
-                price = Math.abs(((rows.item(i).children[3].children[0].value))) || "00"
+                if (select[i - 1].value != 'number') {
+                    price = Math.abs(((rows.item(i).children[3].children[0].value))) || "00"
+                    quantity = Math.abs((rows.item(i).children[2].children[0].value)) / unit || 0
+                    total = price * quantity
+                } else {
+                    price = Math.abs(((rows.item(i).children[3].children[0].value))) || "00"
+                    quantity = Math.abs((rows.item(i).children[2].children[0].value)) / unit || 0
+                    result += +(price * quantity)
+                    total = price * quantity
+                    numbers.innerText = Number(numbers.innerText) + Number(Math.abs((rows.item(i).children[2].children[0].value)));
+                    quantity = 0;
+                }
                 result += +(price * quantity)
-                total = price * quantity
+
                 rows.item(i).children[4].children[0].innerText = total.toFixed(1);
                 totalWeight += quantity;
                 document.getElementById('weight').innerText = totalWeight;
@@ -79,6 +92,7 @@ addButton.addEventListener('click', () => {
         <select>
                         <option selected  value="kg">كيلو</option>
                         <option value="gm">جرام</option>
+                        <option value="number">عدد</option>
                     </select>
     </td>
         <td>
