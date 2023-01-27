@@ -3,7 +3,7 @@ let id = params.get("id");
 console.log(productName.innerText)
 
 async function getProduct(id) {
-    const response = await fetch('http://localhost:4000/getProduct/' + id);
+    const response = await fetch('https://thecost17.onrender.com/getProduct/' + id);
     const json = await response.json();
     printOne(json)
 }

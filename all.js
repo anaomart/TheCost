@@ -1,6 +1,6 @@
 let section = document.querySelector('section')
 async function getAll() {
-    const response = await fetch('http://localhost:4000/getAll');
+    const response = await fetch('https://thecost17.onrender.com/getAll');
     const json = await response.json();
     for (let i = 0; i < json.length; i++) {
         console.log(json[i].name);

@@ -177,7 +177,7 @@ numberOfPieces.addEventListener('keyup', () => {
 
 function sendDataToDataBase() {
     calcPrice(rows)
-    const response = fetch('http://localhost:4000/storeProducts', {
+    const response = fetch('https://thecost17.onrender.com/storeProducts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
