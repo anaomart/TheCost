@@ -6,6 +6,10 @@ let list = document.querySelector('#exampleList')
 let weight = document.querySelector('#weight')
 let numberOfPieces = document.querySelector('.number-of-pieces')
 let numbers = document.querySelector('#numbers')
+let ListOfObjects = []
+let obj = {}
+let productName = document.querySelector('h1');
+let select = document.querySelectorAll('select option')
 
 function listUpdate() {
     if (localStorage.getItem('product')) {
@@ -22,10 +26,11 @@ let result = 0
 let totalWeight = 0;
 
 function calcPrice(rows) {
-    [...rows].map(ele => {
+    console.log(select);
+    [...rows, productName, ...select].map(ele => {
         ele.addEventListener('keyup', () => {
+            let productName = document.querySelector('h1');
             let select = document.querySelectorAll('select')
-
             let total = 0;
             let price = 0;
             let quantity = 0;
@@ -42,30 +47,40 @@ function calcPrice(rows) {
                 }
 
                 let unit = select[i - 1].value == 'gm' ? 1000 : 1;
-                if (select[i - 1].value != 'number') {
-                    price = Math.abs(((rows.item(i).children[3].children[0].value))) || "00"
-                    quantity = Math.abs((rows.item(i).children[2].children[0].value)) / unit || 0
-                    total = price * quantity
-                } else {
-                    price = Math.abs(((rows.item(i).children[3].children[0].value))) || "00"
-                    quantity = Math.abs((rows.item(i).children[2].children[0].value)) / unit || 0
-                    result += +(price * quantity)
-                    total = price * quantity
-                    numbers.innerText = Number(numbers.innerText) + Number(Math.abs((rows.item(i).children[2].children[0].value)));
+                price = Math.abs(((rows.item(i).children[3].children[0].value))) || "00"
+                quantity = Math.abs((rows.item(i).children[2].children[0].value)) / unit || 0
+                total = price * quantity
+
+                let unitToDataBase = unit;
+
+                if (select[i - 1].value == 'number') {
+                    numbers.innerText = Number(numbers.innerText) + quantity;
                     quantity = 0;
+                    unitToDataBase = 0
                 }
+
                 result += +(price * quantity)
 
                 rows.item(i).children[4].children[0].innerText = total.toFixed(1);
                 totalWeight += quantity;
                 document.getElementById('weight').innerText = totalWeight;
+                ////// To database 
+                ListOfObjects[0] = (productName.innerText)
+                if (!rows.item(i).children[1].children[0].value) {
+                    continue;
+                }
+                console.log(unitToDataBase)
+                obj[i] = { name: rows.item(i).children[1].children[0].value, quantity: rows.item(i).children[2].children[0].value, unit: unitToDataBase }
+
+
 
             };
             document.getElementById('cost').innerText = result.toFixed(1);
-            // piece weight 
 
+            ListOfObjects[1] = (obj)
+            obj = {}
 
-
+            console.log(ListOfObjects)
         })
     })
 
@@ -159,3 +174,16 @@ numberOfPieces.addEventListener('keyup', () => {
     calcPrice(rows)
 
 })
+
+function sendDataToDataBase() {
+    calcPrice(rows)
+    const response = fetch('http://localhost:4000/storeProducts', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: ListOfObjects[0], products: ListOfObjects[1] })
+    })
+    console.log(ListOfObjects)
+
+}
