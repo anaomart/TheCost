@@ -18,7 +18,7 @@ function printAll(array) {
         let div = document.createElement('div');
         div.classList.add('product')
         let link = document.createElement('a');
-        link.href = '/product.html?id=' + array[i]._id
+        link.href = 'https://anaomart.github.io/product.htm?id=' + array[i]._id
         link.appendChild(document.createTextNode(array[i].name))
         div.appendChild(link)
         section.appendChild(div)
