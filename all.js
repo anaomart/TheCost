@@ -10,6 +10,7 @@ const deleteProduct = async(id) => {
         })
         .then(res => res.text())
         .then(res => console.log(res))
+    console.log("deleteProduct")
 }
 
 function printAll(array) {

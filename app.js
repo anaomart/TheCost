@@ -18,9 +18,9 @@ function listUpdate() {
             return `<option value=${ele}></option>`
         }))
     }
-
 }
 listUpdate();
+console.log("")
 
 let result = 0
 let totalWeight = 0;

@@ -8,6 +8,7 @@ async function getProduct(id) {
     printOne(json)
 }
 getProduct(id);
+console.log("")
 
 function printOne(product) {
     table.innerHTML = ''
