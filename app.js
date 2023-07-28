@@ -53,14 +53,14 @@ function calcPrice(rows) {
 
                 let unitToDataBase = unit;
 
+
+
+                result += +(price * quantity)
                 if (select[i - 1].value == 'number') {
                     numbers.innerText = Number(numbers.innerText) + quantity;
                     quantity = 0;
                     unitToDataBase = 0
                 }
-
-                result += +(price * quantity)
-
                 rows.item(i).children[4].children[0].innerText = total.toFixed(1);
                 totalWeight += quantity;
                 document.getElementById('weight').innerText = totalWeight;
