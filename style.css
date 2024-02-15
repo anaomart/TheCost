@@ -85,8 +85,15 @@ h1 {
     }
     .buttons {
         padding: 0 100px ;
-        display:grid;
-        grid-template-columns: 400px 400px 400px;
+        display:flex;
+        justify-content:space-between;
+    }
+    .buttons-child{
+        flex:1;
+        border:2px solid blue;
+    }
+    .dummy{
+        display:none;
     }
     #cost , #weight {
         font-size:20px;
