@@ -33,16 +33,16 @@
                         <input type="text" name="example" placeholder="اسم المنتج" list="exampleList" class="firstOne">
                         <datalist id="exampleList">
 
-                    </datalist>
+                        </datalist>
                     </td>
                     <td>
                         <input type="text" placeholder="الكميه">
                         <select>
-                        <option selected  value="kg">كيلو</option>
-                        <option value="gm">جرام</option>
-                        <option value="number">عدد</option>
+                            <option selected value="kg">كيلو</option>
+                            <option value="gm">جرام</option>
+                            <option value="number">عدد</option>
 
-                    </select>
+                        </select>
                     </td>
                     <td>
                         <input type="text" placeholder=" السعر ">
@@ -59,10 +59,10 @@
                     <td>
                         <input type="text" placeholder="الكميه">
                         <select>
-                        <option selected  value="kg">كيلو</option>
-                        <option value="gm">جرام</option>
-                        <option value="number">عدد</option>
-                    </select>
+                            <option selected value="kg">كيلو</option>
+                            <option value="gm">جرام</option>
+                            <option value="number">عدد</option>
+                        </select>
                     </td>
                     <td>
                         <input type="text" class="x" placeholder=" السعر ">
@@ -78,15 +78,16 @@
                         <input type="text" name="example" placeholder="اسم المنتج" list="exampleList">
                         <datalist id="exampleList">
 
-                    </datalist></td>
+                        </datalist>
+                    </td>
                     <td>
                         <input type="text" placeholder="الكميه">
                         <select>
-                        <option selected  value="kg">كيلو</option>
-                        <option value="gm">جرام</option>
-                        <option value="number">عدد</option>
+                            <option selected value="kg">كيلو</option>
+                            <option value="gm">جرام</option>
+                            <option value="number">عدد</option>
 
-                    </select>
+                        </select>
                     </td>
                     <td>
                         <input type="text" placeholder="السعر ">
@@ -99,31 +100,32 @@
             </tbody>
         </table>
         <div class="info-buttons">
-            <button type="button" class="btn btn-primary add">اضافه اسعار  </button>
+            <button type="button" class="btn btn-primary add">اضافه اسعار </button>
             <div class='image'><img src="./circle-plus-solid.svg" alt=""> </div>
             <button type="button" class="btn btn-info print">Print </button>
         </div>
         <!-- =------------------------------- -->
         <div class="buttons">
-            <div style="margin-right:-50px ;height: 1000px;">
+            <div class="buttons-child" style="margin-right:-50px ;height: 1000px;">
                 <div class="result bg-dark w-50">
                     الأعداد : <span id="numbers">0</span>
                 </div>
                 <button type="button" class="btn btn-warning " onclick={sendDataToDataBase()}>حفظ </button>
 
             </div>
-            <div style=" height: 1000px;">
+            <div class="buttons-child" style=" height: 1000px;">
                 <div class="result bg-info   w-50">
                     الوزن : <span id="weight">0</span>
                 </div>
                 <div style="text-align: center; margin-top: 10px;">
-                    <label>  وزن القطعه </label>
+                    <label> وزن القطعه </label>
                     <input style="width:80px " type="text" placeholder="وزن القطعه" class="weight-of-pieces">
 
                 </div>
-                <h5 style="text-align: center; "> وزن القطعه : <span class='one-piece-weight text-info' style="font-size:24px"></span></h5>
+                <h5 style="text-align: center; "> وزن القطعه : <span class='one-piece-weight text-info'
+                        style="font-size:24px"></span></h5>
             </div>
-            <div style=" height: 100px;">
+            <div class="buttons-child" style=" height: 100px;">
                 <div class="result bg-success w-50">
                     اجمالي التكلفه : <span id="cost">0</span>
                 </div>
@@ -132,9 +134,10 @@
                     <input style="width:80px " type="text" placeholder="عدد القطع " class="number-of-pieces">
 
                 </div>
-                <h5 style="text-align: center"> سعر القطعه : <span class='one-piece' style="color:green;font-size:24px"></span></h5>
+                <h5 style="text-align: center"> سعر القطعه : <span class='one-piece'
+                        style="color:green;font-size:24px"></span></h5>
             </div>
-            <div>
+            <div class="dummy">
 
 
             </div>
@@ -168,7 +171,7 @@
             </div>
 
             </table>
-            <button type="button" class="btn btn-primary addToLocalStorage">اضافه  </button>
+            <button type="button" class="btn btn-primary addToLocalStorage">اضافه </button>
 
 
         </div>
